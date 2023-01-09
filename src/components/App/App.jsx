@@ -1,17 +1,28 @@
-import css from 'components/App/App.module.css';
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from 'components/ContactList/ContactList';
-import Filter from 'components/Filter/Filter';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import NotFound from '../../pages/NotFound';
+import SharedLayout from '../SharedLayout/SharedLayout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const Home = lazy(() => import('../../pages/Home/Home'));
+const NewContact = lazy(() => import('../../pages/NewContact/NewContact'));
+const EditContact = lazy(() => import('../../pages/EditContact/EditContact'));
 
 export default function App() {
   return (
-    <div className={css.container}>
-      <h1>Phonebook</h1> 
-      <ContactForm />
-      <h2 className={css.subtitle}>Contacts</h2>
-      <Filter />
-      <ContactList /> 
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/newcontact" element={<NewContact />} />
+          <Route path="/:id" element={<EditContact />} />
+          <Route path="*" element={<NotFound />}></Route>
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </>
   );
-};
+}
+ 
+

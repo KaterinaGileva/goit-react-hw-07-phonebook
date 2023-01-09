@@ -1,16 +1,20 @@
-import  React, { useState } from 'react';
+import { useState } from 'react';
 import css from 'components/ContactForm/ContactForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSliceApi';
-import { getContacts } from 'redux/selectors';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useAddContactMutation, useGetContactsQuery } 
+from 'redux/contactsSliceApi';
+
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
-  const contact = useSelector(getContacts); 
+  const [phone, setPhone] = useState('');
+  const [personal, setPersonal] = useState(true);
+  const navigate = useNavigate();
+  const closeForm = () => navigate('/');
    
-  const formAddContact = (name, number) => dispatch(addContact(name, number));
+  const { data: contact } = useGetContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const handleChange = event => {
     switch (event.target.name) {
@@ -18,17 +22,17 @@ export default function ContactForm() {
         setName(event.target.value);
         break;
 
-      case 'number':
-        setNumber(event.target.value);
-        break;
+        case 'phone':
+          setPhone(event.target.value);
+          break;
 
       default:
         return;
     }
   };
   
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = async value => {
+    value.preventDefault();
 
     const normalizedName = name.toLowerCase();
     const availableContact = contact.find(
@@ -36,18 +40,40 @@ export default function ContactForm() {
     );
 
     if (availableContact) {
-      alert.info(`${name} is already in contacts`);
+      toast.info(`${name} is already in contacts!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     } else {
-      formAddContact(name, number);
+      try {
+        await addContact({ name, phone, personal });
+        toast.success(`${name} successfully added!`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } catch (error) {
+        toast.error('Error adding data!', {
+          position: toast.POSITION.TOP_LEFT,
+        });
+        console.log(error);
+      }
     }
 
     setName('');
-    setNumber('');
+    setPhone('');
+    closeForm(false);
   };
 
         return (
            <form className={css.form} onSubmit={handleSubmit}>
+            <label>
+             <input
+              type="checkbox"
+              checked={personal}
+              onChange={() => setPersonal(!personal)}
+              />
+              Personal contact
+            </label>
+               
                <label className={css.name} >
                  Name
                  <input
@@ -66,7 +92,7 @@ export default function ContactForm() {
                  <input
                    type="tel"
                    name='number'
-                   value={number}
+                   value={phone}
                    className={css.input}
                    onChange={handleChange}
                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
