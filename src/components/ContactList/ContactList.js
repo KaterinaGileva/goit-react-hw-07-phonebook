@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/contactsSliceApi';
 import { getContacts, getFilterValue } from 'redux/selectors';
 import css from './ContactList.module.css';
 
