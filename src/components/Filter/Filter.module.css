@@ -1,15 +1,30 @@
-.label {
-    display: inline-block;;
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    color: green;
-}
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1, 875;
+  padding: 10px, 5px;
+  margin: 0, 0, 0, 20px;
+};
 
-.input {
-    display: flex;
-    margin-top: 10px;
-    font-size: 18px;
-    border: 2px solid gray;
-    
-}
+.filterInput {
+  font: inherit;
+  padding: 8px;
+  margin: 8px 0 8px 8px;
+  max-width: 80%;
+  border-radius: 8px;
+  border-color: blue;
+};
+
+.filterDiv {
+display: flex;
+/* justify-content: space-between; */
+align-items: center;
+margin-left: 50px;
+};
+
+.filterTitle {
+margin-left: 50px;
+};

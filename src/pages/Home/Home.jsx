@@ -1,4 +1,4 @@
-import Filter from '../../components/Filter/Filter';
+import Filter from '../../components/StatusFilter/StatusFilter';
 import ContactList from '../../components/ContactList/ContactList';
 
 export default function Home() {
