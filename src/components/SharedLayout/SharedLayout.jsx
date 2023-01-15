@@ -1,7 +1,8 @@
+import Spinner from 'components/Spinner/Spinner';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import Spinner from '../Spinner/Spinner';
 import { Container, Header, Link } from './SharedLayout.styled';
+
 
 export default function SharedLayout() {
   return (
