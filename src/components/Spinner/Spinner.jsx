@@ -1,7 +1,9 @@
 import { Puff } from 'react-loader-spinner';
+import styled from 'styled-components';
+
 export default function Spinner() {
     return (
-        
+        <Loader>
             <Puff
   height="80"
   width="80"
@@ -13,9 +15,13 @@ export default function Spinner() {
   visible={true}
 />
 
-        
+        </Loader>
     )
 }
 
+const Loader = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 

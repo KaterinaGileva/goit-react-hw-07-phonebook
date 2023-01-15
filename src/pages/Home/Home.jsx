@@ -1,11 +1,12 @@
-import Filter from '../../components/StatusFilter/StatusFilter';
+import Filter from '../../components/Filter/Filter';
 import ContactList from '../../components/ContactList/ContactList';
+import { ContactsTitle } from './Home.styled';
 
 export default function Home() {
   return (
     <main>
       <Filter />
-      <h1>Contacts</h1>
+      <ContactsTitle>Contacts</ContactsTitle>
       <ContactList />
     </main>
   );

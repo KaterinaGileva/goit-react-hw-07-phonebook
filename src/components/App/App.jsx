@@ -11,7 +11,7 @@ const EditContact = lazy(() => import('../../pages/EditContact/EditContact'));
 
 export default function App() {
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/" element={<Home />} />
@@ -21,7 +21,7 @@ export default function App() {
         </Route>
       </Routes>
       <ToastContainer />
-    </>
+    </div>
   );
 }
  

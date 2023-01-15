@@ -1,5 +1,6 @@
+import styled from 'styled-components';
 
-.EditPhonebookForm {
+export const EditPhonebookForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,28 +9,28 @@
   border: 2px solid #dbb858;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #e5e7c5;
-};
+  background-color: #FFFF00;
+`;
 
-.EditPhonebookLabel {
+export const EditPhonebookLabel = styled.label`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-weight: 700;
   font-size: 20px;
   line-height: 1, 875;
-};
+`;
 
-.EditPhonebookInput {
+export const EditPhonebookInput = styled.input`
   font: inherit;
   padding: 8px;
   margin: 8px 0 8px 0;
   max-width: 80%;
   border-radius: 8px;
   border-color: blue;
-};
+`;
 
-.EditPhonebookButton {
+export const EditPhonebookButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -48,30 +49,28 @@
   cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-};
-
-.EditPhonebookButton:hover,
-.EditPhonebookButton:focus {
+  :hover,
+  :focus {
     border: 2px solid;
     background-color: #21d4f3;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: scale(1.01);
   }
+`;
 
 
-.EditPhonebookCheckbox {
+export const EditPhonebookCheckbox = styled.input`
 margin-right: 8px;
   width: 24px;
   height: 24px;
   border: 1px solid black;
-};
+`;
 
-.EditPhonebookCheckboxLabel {
+export const EditPhonebookCheckboxLabel = styled.label`
   display: flex;
   align-items: center;
   margin: 0 0 10px 0;
   font-weight: 700;
   font-size: 20px;
   line-height: 1, 875;
-};
+`;

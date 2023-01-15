@@ -7,11 +7,10 @@ display: inline-flex;
     border: solid 1px blue;
     font: inherit;
     cursor: pointer;
-    background-color: #fff;
+    background-color:  green;
     
     :hover {
-    background-color: #1565c0;
-    color: #fff;
+    background-color: green;
     transform: scale(1.02);
   }
   

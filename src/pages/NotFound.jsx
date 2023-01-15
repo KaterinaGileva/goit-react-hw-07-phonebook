@@ -1,8 +1,8 @@
-
+import { NotificationManager } from 'react-notifications';
 
 export default function NotFound() {
   console.log('Error path');
-  alert.warning(
+  NotificationManager.warning(
     'Sorry, something went wrong.... Please try again.'
   );
   return;

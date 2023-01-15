@@ -1,24 +1,22 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-
-
 import Spinner from '../Spinner/Spinner';
+import { Container, Header, Link } from './SharedLayout.styled';
 
 export default function SharedLayout() {
   return (
-    <>
-      <div>
-        <nav>
-          <NavLink src="/">
-            Phonebook
-          </NavLink>
-          <NavLink to="/newcontact">New Contact</NavLink>
-        </nav>
-      </div>
-      <Suspense fallback={<Spinner />}>
-        <Outlet />
-      </Suspense>
-    </>
+    <Container>
+    <Header>
+      <nav>
+        <Link to="/" end>
+          Phonebook
+        </Link>
+        <Link to="/newcontact">New Contact</Link>
+      </nav>
+    </Header>
+    <Suspense fallback={<Spinner />}>
+      <Outlet />
+    </Suspense>
+  </Container>
   );
 }

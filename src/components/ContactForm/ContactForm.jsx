@@ -1,10 +1,16 @@
 import { useState } from 'react';
-import css from 'components/ContactForm/ContactForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAddContactMutation, useGetContactsQuery } 
 from 'redux/contactsSliceApi';
-
+import {
+  PhonebookForm,
+  PhonebookLabel,
+  PhonebookInput,
+  PhonebookButton,
+  PhonebookCheckbox,
+  PhonebookCheckboxLabel,
+} from './ContactForm.styled';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -64,43 +70,40 @@ export default function ContactForm() {
   };
 
         return (
-           <form className={css.form} onSubmit={handleSubmit}>
-            <label>
-             <input
+          <PhonebookForm onSubmit={handleSubmit}>
+          <PhonebookCheckboxLabel>
+            <PhonebookCheckbox
               type="checkbox"
               checked={personal}
               onChange={() => setPersonal(!personal)}
-              />
-              Personal contact
-            </label>
-               
-               <label className={css.name} >
-                 Name
-                 <input
-                   type="text"
-                   name='name'
-                   value={name}
-                   className={css.input}
-                  onChange={handleChange}     
-                   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                   required
-                 /> 
-               </label> 
-               <label className={css.number} >
-                  Number 
-                 <input
-                   type="tel"
-                   name='number'
-                   value={phone}
-                   className={css.input}
-                   onChange={handleChange}
-                   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                   required
-               />
-               </label>
-            <button type="submit" className={css.formBtn}>Add contact</button>
-       </form>
+            />
+            Personal contact
+          </PhonebookCheckboxLabel>
+          <PhonebookLabel>
+            Name
+            <PhonebookInput
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </PhonebookLabel>
+          <PhonebookLabel>
+            Number
+            <PhonebookInput
+              type="tel"
+              name="phone"
+              value={phone}
+              onChange={handleChange}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+          </PhonebookLabel>
+          <PhonebookButton type="submit">Add contact</PhonebookButton>
+        </PhonebookForm>
            );
          }

@@ -1,4 +1,6 @@
-.overlay {
+import styled from 'styled-components';
+
+export const Overlay = styled.div`
   background-color: #1e2129;
   z-index: 300;
   position: fixed;
@@ -10,9 +12,9 @@
   align-items: center;
   justify-content: space-between;
   /* padding: 50px; */
-};
+`;
 
-.modal {
+export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +26,15 @@
   background-color: #bbd;
   border: 3px solid red;
   border-radius: 10px;
-};
+`;
 
-.editForm {
+export const EditForm = styled.div`
   margin: 5px;
   height: 100%;
   width: 100%;
-};
+`;
 
-.modalButton {
+export const ModalButton = styled.button`
   display: inline-flex;
   align-items: center;
   margin: 20px 0 0 0;
@@ -53,20 +55,18 @@
   cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-};
-
-.modalButton:hover,
-.modalButton:focus {
+  :hover,
+  :focus {
     border: 2px solid;
     background-color: #21d4f3;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: scale(1.01);
   }
+`;
 
-.modalTitle {
+export const ModalTitle = styled.p`
   margin: 0 0 20px 0;
   font-weight: 700;
   font-size: 24px;
   line-height: 1, 875;
-};
+`;

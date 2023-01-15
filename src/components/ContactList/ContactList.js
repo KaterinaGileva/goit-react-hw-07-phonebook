@@ -3,17 +3,14 @@ import { selectFilterStatus, selectFilterValue } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from '..//../redux/contactsSliceApi';
 import Contact from 'components/Contact/Contact';
+import { ContactUl, ContactItem } from './ContactList.styled';
 
 export default function ContactList() {
   const filterValue = useSelector(selectFilterValue);
   const filterStatus = useSelector(selectFilterStatus);
-  // console.log("filterStatus:", filterStatus)
-
+  
   const { data: contacts, error, isLoading } = useGetContactsQuery();
-  // console.log('data:', contacts);
-  // console.log('error:', error);
-  // console.log('isLoading:', isLoading);
-
+  
   let getVisibleContacts = (contacts, filter, status) => {
     if (contacts)
       switch (status) {
@@ -51,20 +48,20 @@ export default function ContactList() {
       {isLoading ? (
         <b>Loading...</b>
       ) : (
-        <>
+        <ContactUl>
           {visibleContacts.map(({ name, phone, id, personal }) => (
-            <div
+            <ContactItem
               key={id}
               style={
                 personal === false
-                  ? { backgroundColor: ` #e1c7e9` }
-                  : { backgroundColor: `#00fff2` }
+                  ? { backgroundColor: `green` }
+                  : { backgroundColor: `yellow` }
               }
             >
               <Contact name={name} phone={phone} id={id} personal={personal} />
-            </div>
+            </ContactItem>
           ))}
-        </>
+        </ContactUl>
       )}
     </>
   );

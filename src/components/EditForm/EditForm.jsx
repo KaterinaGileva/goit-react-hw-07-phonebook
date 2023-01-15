@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { useUpdateContactMutation } from '../../redux/contactsSliceApi';
-
+import {
+  EditPhonebookForm,
+  EditPhonebookLabel,
+  EditPhonebookInput,
+  EditPhonebookButton,
+  EditPhonebookCheckbox,
+  EditPhonebookCheckboxLabel
+} from './EditForm.styled';
 
 export default function EditForm({ initialValues, onSubmit }) {
   const [updateContact] = useUpdateContactMutation();
@@ -35,18 +42,18 @@ export default function EditForm({ initialValues, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input
+    <EditPhonebookForm onSubmit={handleSubmit}>
+      <EditPhonebookCheckboxLabel>
+        <EditPhonebookCheckbox
           type="checkbox"
           checked={personal}
           onChange={() => setPersonal(!personal)}
         />
         Personal contact
-      </label>
-      <label>
+      </EditPhonebookCheckboxLabel>
+      <EditPhonebookLabel>
         Name
-        <input
+        <EditPhonebookInput
           type="text"
           name="name"
           value={name}
@@ -55,10 +62,10 @@ export default function EditForm({ initialValues, onSubmit }) {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
-      <label>
+      </EditPhonebookLabel>
+      <EditPhonebookLabel>
         Number
-        <input
+        <EditPhonebookInput
           type="tel"
           name="phone"
           value={phone}
@@ -67,8 +74,8 @@ export default function EditForm({ initialValues, onSubmit }) {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-      </label>
-      <button type="submit">Save change</button>
-    </form>
+      </EditPhonebookLabel>
+      <EditPhonebookButton type="submit">Save change</EditPhonebookButton>
+    </EditPhonebookForm>
   );
 }
