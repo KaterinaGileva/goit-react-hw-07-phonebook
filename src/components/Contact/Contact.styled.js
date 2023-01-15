@@ -11,7 +11,7 @@ export const ContactButton = styled.button`
   height: 30px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 1, 875;
+  line-height: 1,875;
   text-transform: uppercase;
   background-color: blue;
   color: yellow;
@@ -19,11 +19,12 @@ export const ContactButton = styled.button`
   cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   :hover,
   :focus {
     border: 2px solid;
     background-color: white;
-    color: green;
+    color:
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
   }

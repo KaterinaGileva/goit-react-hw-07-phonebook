@@ -7,7 +7,7 @@ export default function Spinner() {
             <Puff
   height="80"
   width="80"
-  radisu={1}
+  radius={1}
   color="#4fa94d"
   ariaLabel="puff-loading"
   wrapperStyle={{}}
