@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { selectFilterStatus, selectFilterValue } from 'redux/selectors';
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from '..//../redux/contactsSliceApi';
 import Contact from 'components/Contact/Contact';
 import { ContactUl, ContactItem } from './ContactList.styled';
+import { useGetContactsQuery } from 'redux/contactsSliceApi';
 
 export default function ContactList() {
   const filterValue = useSelector(selectFilterValue);
